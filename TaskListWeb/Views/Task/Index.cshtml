@@ -1,0 +1,26 @@
+﻿@using Domain.Entities
+@model List<Note>
+
+
+
+    <h1 class="display-2">Task List</h1>
+     <a asp-action="Add"  class = "btn btn-danger">Add</a>
+
+       <table class="table table-striped">
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Author</th>
+     
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(model => item.Title)</td>
+                <td>@Html.DisplayFor(model => item.Description)</td>
+                <td>@Html.DisplayFor(model => item.Author)</td>
+            </tr>
+        }
+    </table>
+     <a> <label class="control-label">Number of Tasks: @ViewBag.Count</label></a>
