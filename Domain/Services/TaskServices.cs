@@ -23,10 +23,18 @@ namespace Domain.Services
             _userSession = userSession;
         }
 
-        public async Task Save(int id,string title, string description, string author)
+        public async Task Save(int id,string title, string description, string author, DateTime date)
         {
+
+
+
+            if (string.IsNullOrEmpty(description))
+            {
+                throw new InvalidOperationException("The task does not have a description, please insert to continue");
+            }
+
             _userSession.IncreaseCounter();
-            _tasks.Add(new Note() { Id=id,Title = title, Description = description, Author = author });
+            _tasks.Add(new Note( id, title,  description, author, date) );
         }
 
 

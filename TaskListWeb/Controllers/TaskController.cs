@@ -25,11 +25,23 @@ namespace TaskListWeb.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Save(int id, string title, string description, string author)
+        public async Task<ActionResult> Save(int id, string title, string description, string author, DateTime date)
         {
-            await _taskService.Save(id, title, description, author);
-            await _UserSession.IncreaseCounter();
-            return RedirectToAction("Index");
+
+            try
+            {
+                await _taskService.Save(id, title, description, author, date);
+                await _UserSession.IncreaseCounter();
+                return RedirectToAction("Index", "Task");
+            }
+            catch (Exception e)
+            {
+                TempData["ErrorMessage"] = e.Message;
+                return RedirectToAction("Add", "Task");
+            }
+            
+
+
         }
 
         public IActionResult Add()

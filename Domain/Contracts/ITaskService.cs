@@ -13,7 +13,7 @@ namespace Domain.Contracts
     /// </summary>
     public interface ITaskService
     {
-        Task Save( int id, string title, string description, string author);
+        Task Save( int id, string title, string description, string author, DateTime date);
         Task <List<Note>> GetAll();
     } 
 }

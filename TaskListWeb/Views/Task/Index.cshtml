@@ -11,6 +11,8 @@
             <th>Title</th>
             <th>Description</th>
             <th>Author</th>
+            <th>DateTime</th>
+
      
         </tr>
 
@@ -20,6 +22,7 @@
                 <td>@Html.DisplayFor(model => item.Title)</td>
                 <td>@Html.DisplayFor(model => item.Description)</td>
                 <td>@Html.DisplayFor(model => item.Author)</td>
+                <td>@Html.DisplayFor(model => item.Date)</td>
             </tr>
         }
     </table>
